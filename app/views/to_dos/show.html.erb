@@ -1,0 +1,23 @@
+<div class="container">
+  <table class="table table-striped">
+  <tr>
+    <th>待辦事項:</th><td><%= @to_do.name %></td></tr>
+  <tr>
+    <th>完成期限:</th><td><%= @to_do.due_date %></td></tr>
+  <tr>
+    <th>詳細內容:</th><td><%= simple_format(@to_do.note) %></td></tr>
+  <tr><td></td><td>
+      <button type="button" class="btn btn-secondary btn-lg pull-right" >
+        <%= link_to to_dos_path do %>
+          <span class="glyphicon glyphicon-list-alt"></span>
+        <% end %>
+      </button>
+
+      <button type="button" class="btn btn-secondary btn-lg pull-right" >
+        <%= link_to edit_to_do_path(@to_do) do %>
+          <span class="glyphicon glyphicon-pencil"></span>
+        <% end %>
+      </button>
+    </td>    
+  </tr>
+</div>
