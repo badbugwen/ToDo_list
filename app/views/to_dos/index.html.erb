@@ -9,45 +9,55 @@
     <h3 class="card-heading text-center">待辦事項清單</h3>
     <ul>
         <thead>
-          <tr class="bg-primary">
-            <th>完成期限</th>
-            <td><span class="glyphicon glyphicon-check"></span></td>
-            <td>待辦事項</td>
-            <td>檢視</td>
-            <td>編輯</td>
-            <td>刪除</td>
-          </tr>
+          <div class="row">
+            <tr class="bg-primary">
+              <div class="col-2">
+                <th>完成期限</th>
+              </div>
+              <div class="col-1">
+                <td><span class="glyphicon glyphicon-check"></span></td>
+              </div>
+              <div class="col">
+                <td>待辦事項</td>
+              </div>
+              <div class="col-1"><td>檢視</td></div>
+              <div class="col-1"><td>編輯</td></div>
+              <div class="col-1"><td>刪除</td></div>
+            </tr>
+          </div>
         </thead>
 
         <tbody>
-          <% @to_dos.each do |to_do| %>
-            <tr>
-              <th><%= to_do.due_date %></th>
-                <% if (to_do.due_date - Date.today).to_i < 0 
-                      print %>
-                        <td><ban><span class="glyphicon glyphicon-ban-circle"></span></ban></td>
-                <% else %>
-                  <td><%= check_box_tag :is_done, true , to_do.is_done, data: { url: is_done_to_do_path(to_do), method: :post, remote: true } %></td>   
-                <% end %>
+          <div class="row">
+            <% @to_dos.each do |to_do| %>
+              <tr>
+                <div class="col-2"><th><%= to_do.due_date %></th></div>
+                  <% if (to_do.due_date - Date.today).to_i < 0 
+                        print %>
+                          <div class="col-1"><td><ban><span class="glyphicon glyphicon-ban-circle"></span></ban></td></div>
+                  <% else %>
+                    <div class="col-1"><td><%= check_box_tag :is_done, true , to_do.is_done, data: { url: is_done_to_do_path(to_do), method: :post, remote: true } %></td></div>   
+                  <% end %>
 
-                <% if to_do.is_done %> 
-                  <td><s><%= to_do.name %></s></td>
-                <% else %>
-                   <td><%= to_do.name %></td>
-                <%end %>
+                  <% if to_do.is_done %> 
+                    <div class="col"><td><s><%= to_do.name %></s></td></div>
+                  <% else %>
+                     <div class="col"><td><%= to_do.name %></td></div>
+                  <%end %>
 
-              <td><%= link_to to_do_path(to_do) do %><span class="glyphicon glyphicon-search"></span><% end %></td>    
+                <div class="col-1"><td><%= link_to to_do_path(to_do) do %><span class="glyphicon glyphicon-search"></span><% end %></td></div>  
 
 
-              <td><%= link_to edit_to_do_path(to_do) do %><span class="glyphicon glyphicon-pencil"></span><% end %></td>
-              
-              <% if (to_do.due_date - Date.today).to_i >= 0 %>
-                <td><%= link_to to_do_path(to_do), method: :delete, data:{ confirm: "真的要刪嗎?" } do %><span class="glyphicon glyphicon-trash"></span><% end %></td>
-                <% else print %><td><% " " %></td>
-              <% end %>  
+                <div class="col-1"><td><%= link_to edit_to_do_path(to_do) do %><span class="glyphicon glyphicon-pencil"></span><% end %></td></div>
+                
+                <% if (to_do.due_date - Date.today).to_i >= 0 %>
+                  <div class="col-1"><td><%= link_to to_do_path(to_do), method: :delete, data:{ confirm: "真的要刪嗎?" } do %><span class="glyphicon glyphicon-trash"></span><% end %></td></div>
+                  <% else print %><div class="col-1"><td><% " " %></td></div>
+                <% end %>  
 
-            </tr>
-          <% end %> 
+              </tr>
+            <% end %> 
+          </div>
         </tbody>
     </ul>
   </table> 

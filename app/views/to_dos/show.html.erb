@@ -1,11 +1,16 @@
 <div class="container">
   <table class="table table-striped">
-  <tr>
-    <th>待辦事項:</th><td><%= @to_do.name %></td></tr>
-  <tr>
-    <th>完成期限:</th><td><%= @to_do.due_date %></td></tr>
-  <tr>
-    <th>詳細內容:</th><td><%= simple_format(@to_do.note) %></td></tr>
+  <div class="row"><tr>
+    <div class="col-4"><th>待辦事項:</th></div>
+    <div class="col"><td><%= @to_do.name %></td></div></tr></div>
+
+  <div class="row"><tr>
+    <div class="col-4"><th>完成期限:</th></div>
+    <div class="col"><td><%= @to_do.due_date %></td></div></tr></div>
+
+  <div class="row"><tr>
+    <div class="col-4"><th>詳細內容:</th></div>
+    <div class="col"><td><%= simple_format(@to_do.note) %></td></div></tr></div>
   <tr><td></td><td>
       <button type="button" class="btn btn-secondary btn-lg pull-right" >
         <%= link_to to_dos_path do %>
